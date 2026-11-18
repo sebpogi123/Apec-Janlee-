@@ -358,5 +358,43 @@ document.querySelectorAll('.tabs').forEach(function(tabs){
   });
 });
 </script>
+
+<style>
+.music{position:fixed;right:1rem;bottom:1rem;z-index:30;display:flex;align-items:center;gap:.6rem}
+.music button{
+  font-family:'Anton';text-transform:uppercase;font-size:1.1rem;letter-spacing:.06em;cursor:pointer;
+  padding:.5rem 1.3rem;transform:skewX(-14deg);border:2px solid #2de2ff;
+  background:#e9fbff;color:#0a3cff;box-shadow:4px 4px 0 #0a3cff
+}
+.music button:hover{background:#2de2ff}
+.music button[aria-pressed="true"]{background:#0a3cff;color:#e9fbff;box-shadow:4px 4px 0 #2de2ff}
+.music input{width:90px;accent-color:#2de2ff}
+.music .msg{background:#020a2b;color:#2de2ff;padding:.2rem .6rem;font-size:.95rem;border:1px solid #2de2ff}
+.music .msg[hidden]{display:none}
+</style>
+
+<div class="music" role="group" aria-label="Background music">
+  <span class="msg" id="musicMsg" hidden>Add music.mp3 to the site folder</span>
+  <input type="range" id="vol" min="0" max="1" step="0.05" value="0.4" aria-label="Music volume">
+  <button id="musicBtn" type="button" aria-pressed="false">♪ Music: Off</button>
+  <audio id="bgm" src="music.mp3" loop preload="none"></audio>
+</div>
+
+<script>
+(function(){
+  var a=document.getElementById('bgm'),b=document.getElementById('musicBtn'),
+      v=document.getElementById('vol'),m=document.getElementById('musicMsg');
+  a.volume=v.value;
+  v.addEventListener('input',function(){a.volume=v.value});
+  function set(on){b.setAttribute('aria-pressed',on);b.textContent='♪ Music: '+(on?'On':'Off')}
+  b.addEventListener('click',function(){
+    if(a.paused){
+      a.play().then(function(){set(true);m.hidden=true}).catch(function(){m.hidden=false;set(false)});
+    }else{a.pause();set(false)}
+  });
+  a.addEventListener('error',function(){m.hidden=false;set(false)});
+})();
+</script>
+
 </body>
 </html>
