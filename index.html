@@ -237,6 +237,38 @@ article small{font-family:'Anton';letter-spacing:.1em;color:var(--navy)}
 .easy{display:block;margin-top:.5rem;padding:.3rem .6rem;background:var(--abyss);color:var(--cyan);font-size:1rem;border-left:4px solid var(--cyan)}
 .easy strong{font-family:'Anton';font-weight:400;text-transform:uppercase;letter-spacing:.05em}
 
+/* Music player */
+.music{position:fixed;right:1rem;bottom:1rem;z-index:30;display:flex;align-items:center;gap:.6rem}
+.music button{
+  font-family:'Anton';text-transform:uppercase;font-size:1.1rem;letter-spacing:.06em;cursor:pointer;
+  padding:.5rem 1.3rem;transform:skewX(-14deg);border:2px solid var(--cyan);
+  background:var(--ice);color:var(--blue);box-shadow:4px 4px 0 var(--blue);transition:background .15s
+}
+.music button:hover{background:var(--cyan)}
+.music button[aria-pressed="true"]{background:var(--blue);color:var(--ice);box-shadow:4px 4px 0 var(--cyan)}
+.music input{width:90px;accent-color:var(--cyan)}
+.music .msg{background:var(--abyss);color:var(--cyan);padding:.2rem .6rem;font-size:.95rem;border:1px solid var(--cyan)}
+.music .msg[hidden]{display:none}
+
+/* About us */
+.about{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;margin-bottom:2.5rem}
+.big4{font-family:'Anton';font-size:clamp(9rem,22vw,18rem);line-height:.8;color:transparent;-webkit-text-stroke:4px var(--cyan);transform:skewX(-8deg);text-shadow:10px 10px 0 var(--blue)}
+.intro h3{font-size:clamp(2.5rem,6vw,4.2rem);color:var(--ice);text-shadow:4px 4px 0 var(--blue);transform:skewX(-8deg);margin-bottom:.6rem}
+.intro p{max-width:56ch;color:var(--glow);font-size:1.25rem}
+.paper{margin-top:1.2rem;max-width:56ch;background:var(--ice);color:var(--abyss);padding:.9rem 2rem .9rem 1.2rem;border-left:10px solid var(--cyan);clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,0 100%);font-size:1.1rem}
+.paper small{display:block;font-family:'Anton';font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.2rem}
+.roster{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem 1.2rem}
+.member{display:flex;align-items:stretch;transition:transform .2s;filter:drop-shadow(6px 6px 0 var(--blue))}
+.member:nth-child(even){margin-top:.8rem}
+.member:hover{transform:translate(-4px,-4px)}
+.ini{position:relative;overflow:hidden;display:grid;place-items:center;min-width:5.6rem;background:#fff;color:#b7c3e8;font-family:'Anton';font-size:2rem;clip-path:polygon(0 0,100% 0,82% 100%,0 100%);border-left:6px solid var(--cyan)}
+.ini img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.plate{flex:1;background:var(--ice);color:var(--blue);padding:.7rem 1.2rem .7rem 2.3rem;margin-left:-1.4rem;clip-path:polygon(22px 0,100% 0,100% 100%,0 100%)}
+.plate b{display:block;font-family:'Anton';font-weight:400;font-size:1.3rem;text-transform:uppercase;line-height:1.1}
+.plate small{color:var(--navy);font-size:.95rem;letter-spacing:.08em}
+.slogan{margin-top:2.5rem;text-align:center;font-family:'Anton';font-size:clamp(2rem,6vw,4rem);text-transform:uppercase;letter-spacing:.1em;color:var(--cyan);text-shadow:4px 4px 0 var(--blue);transform:skewX(-8deg)}
+@media(max-width:800px){.about{grid-template-columns:1fr}.big4{font-size:8rem}.member:nth-child(even){margin-top:0}}
+
 footer{
   margin-top:3rem;padding:2rem clamp(1rem,4vw,3rem);
   background:var(--blue);border-top:6px solid var(--cyan);
@@ -325,17 +357,16 @@ footer{
 
   <section id="group">
     <h2 class="title">About Us</h2>
-    <p style="max-width:60ch;margin-bottom:1.5rem">We are Group 4, the researchers behind this website.</p>
-    <ul class="team">
-      <li>Euhann Zedrick G. Surigao</li>
-      <li>Raiana Jade Pedraza</li>
-      <li>Kristine Mae Castro</li>
-      <li>Janlee Diaz</li>
-      <li>Clark Gavin Enriquez</li>
-      <li>Kirby Seth Miguel</li>
-      <li>Princess Jewel Ruiz</li>
-    </ul>
-    <p class="note">The Development and Visibility Evaluation of Sports Fitness and Website for Academic Performance of APEC Schools C. Raymundo Athletes</p>
+    <div class="about">
+      <div class="big4" aria-hidden="true">4</div>
+      <div class="intro">
+        <h3>Group 4</h3>
+        <p>We are student researchers of APEC Schools C. Raymundo. We built this website to help our fellow athletes train smart, balance their studies, and live out the KaKaMPI values.</p>
+        <div class="paper"><small>Our research</small>The Development and Visibility Evaluation of Sports Fitness and Website for Academic Performance of APEC Schools C. Raymundo Athletes</div>
+      </div>
+    </div>
+    <ul class="roster"><li class="member"><span class="ini">ES<img src="euhann.jpg" alt="" onerror="this.style.display='none'"></span><span class="plate"><b>Euhann Zedrick G. Surigao</b><small>Researcher</small></span></li><li class="member"><span class="ini">RP<img src="raiana.jpg" alt="" onerror="this.style.display='none'"></span><span class="plate"><b>Raiana Jade Pedraza</b><small>Researcher</small></span></li><li class="member"><span class="ini">KC<img src="kristine.jpg" alt="" onerror="this.style.display='none'"></span><span class="plate"><b>Kristine Mae Castro</b><small>Researcher</small></span></li><li class="member"><span class="ini">JD<img src="janlee.jpg" alt="" onerror="this.style.display='none'"></span><span class="plate"><b>Janlee Diaz</b><small>Researcher</small></span></li><li class="member"><span class="ini">CE<img src="clark.jpg" alt="" onerror="this.style.display='none'"></span><span class="plate"><b>Clark Gavin Enriquez</b><small>Researcher</small></span></li><li class="member"><span class="ini">KM<img src="kirby.jpg" alt="" onerror="this.style.display='none'"></span><span class="plate"><b>Kirby Seth Miguel</b><small>Researcher</small></span></li><li class="member"><span class="ini">PR<img src="princess.jpg" alt="" onerror="this.style.display='none'"></span><span class="plate"><b>Princess Jewel Ruiz</b><small>Researcher</small></span></li></ul>
+    <div class="slogan">Better each day</div>
   </section>
 </main>
 
@@ -344,6 +375,13 @@ footer{
   <span>Better each day</span>
 </footer>
 
+
+<div class="music" role="group" aria-label="Background music">
+  <span class="msg" id="musicMsg" hidden>Add music.mp3 to the site folder</span>
+  <input type="range" id="vol" min="0" max="1" step="0.05" value="0.4" aria-label="Music volume">
+  <button id="musicBtn" type="button" aria-pressed="false">♪ Music: Off</button>
+  <audio id="bgm" src="music.mp3" loop preload="none"></audio>
+</div>
 <script>
 document.querySelectorAll('.tabs').forEach(function(tabs){
   var btns=tabs.querySelectorAll('button');
@@ -357,30 +395,7 @@ document.querySelectorAll('.tabs').forEach(function(tabs){
     });
   });
 });
-</script>
 
-<style>
-.music{position:fixed;right:1rem;bottom:1rem;z-index:30;display:flex;align-items:center;gap:.6rem}
-.music button{
-  font-family:'Anton';text-transform:uppercase;font-size:1.1rem;letter-spacing:.06em;cursor:pointer;
-  padding:.5rem 1.3rem;transform:skewX(-14deg);border:2px solid #2de2ff;
-  background:#e9fbff;color:#0a3cff;box-shadow:4px 4px 0 #0a3cff
-}
-.music button:hover{background:#2de2ff}
-.music button[aria-pressed="true"]{background:#0a3cff;color:#e9fbff;box-shadow:4px 4px 0 #2de2ff}
-.music input{width:90px;accent-color:#2de2ff}
-.music .msg{background:#020a2b;color:#2de2ff;padding:.2rem .6rem;font-size:.95rem;border:1px solid #2de2ff}
-.music .msg[hidden]{display:none}
-</style>
-
-<div class="music" role="group" aria-label="Background music">
-  <span class="msg" id="musicMsg" hidden>Add music.mp3 to the site folder</span>
-  <input type="range" id="vol" min="0" max="1" step="0.05" value="0.4" aria-label="Music volume">
-  <button id="musicBtn" type="button" aria-pressed="false">♪ Music: Off</button>
-  <audio id="bgm" src="music.mp3" loop preload="none"></audio>
-</div>
-
-<script>
 (function(){
   var a=document.getElementById('bgm'),b=document.getElementById('musicBtn'),
       v=document.getElementById('vol'),m=document.getElementById('musicMsg');
@@ -395,6 +410,5 @@ document.querySelectorAll('.tabs').forEach(function(tabs){
   a.addEventListener('error',function(){m.hidden=false;set(false)});
 })();
 </script>
-
 </body>
 </html>
